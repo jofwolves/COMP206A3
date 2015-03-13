@@ -5,6 +5,8 @@ int main (void) {
 	
 	FILE *numbers;
 
+	head = 0; // initialize head of list
+
 	do { // get a filename from the user and open the file
 		printf("Input path to source file:\n");
 		char fname[180];

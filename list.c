@@ -20,13 +20,31 @@ void add (int val) {
 }
 
 void prettyPrint (void) {
-
+	printf("Contents of list:\n")
+	
+	NODE *crt = head;
+	while (crt != 0) {
+		printf("%d\n",crt->val);
+		crt = crt->next;
+	}
+	printf("\n");
 }
 
-BOOLEAN delete (int val) {
-
+int delete (int val) {
+	NODE *out = find(val);
+	if (out == 0) return 1; // node not found
+	
+	node *crt = head;
+	
+	return 0;
 }
 
 struct NODE *find (int val) {
-
+	NODE *crt = head;
+	while (crt != 0) {
+		if (crt->val == val) break; // val has been found
+		else crt = crt->next;
+	}
+	return crt; // holds 0 if val is not found
 }
+
