@@ -42,21 +42,23 @@ NODE* find (int val) {
 	NODE *crt = head;
 	while (crt != 0) {
 		if (crt->val == val) break; // val has been found
-		else crt = crt->next;
+		crt = crt->next;
 	}
 	return crt; // already holds 0 if val is not found
 }
 
 int delete (int val) {
 	NODE *out = find(val);
-	if (out == 0) return 1; // node not found
+	//printf("%d\t",out->val); // DEBUG
+	if (out == 0) return 0; // node not found
 	
 	NODE *crt = head;
 	while (crt->next->val != val) crt = crt->next;
+	//printf("%d\n",crt->val); // DEBUG
 	// now crt->next is now the same as out
 	crt->next = out->next; // re-link
 	free(out);
 
-	return 0;
+	return 1; // this is backwards.
 }
 

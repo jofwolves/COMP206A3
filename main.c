@@ -9,7 +9,7 @@ int main (void) {
 	head = 0; // initialize head of list
 
 	do { // get a filename from the user and open the file
-		printf("Input path to source file:\n");
+		printf("Input path to source file: ");
 		char fname[180];
 		scanf("%s",fname);
 		numbers = fopen(fname,"rt");
