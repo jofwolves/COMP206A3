@@ -1,4 +1,10 @@
-#include "list.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct node {
+	int val;
+	struct node *next;
+} NODE;
 
 NODE *head;
 
@@ -19,8 +25,10 @@ void add (int val) {
 	new_node->next = 0;
 }
 
+#undef NEW_NODE
+
 void prettyPrint (void) {
-	printf("Contents of list:\n")
+	printf("Contents of list:\n\n");
 	
 	NODE *crt = head;
 	while (crt != 0) {
@@ -30,21 +38,25 @@ void prettyPrint (void) {
 	printf("\n");
 }
 
-int delete (int val) {
-	NODE *out = find(val);
-	if (out == 0) return 1; // node not found
-	
-	node *crt = head;
-	
-	return 0;
-}
-
-struct NODE *find (int val) {
+NODE* find (int val) {
 	NODE *crt = head;
 	while (crt != 0) {
 		if (crt->val == val) break; // val has been found
 		else crt = crt->next;
 	}
-	return crt; // holds 0 if val is not found
+	return crt; // already holds 0 if val is not found
+}
+
+int delete (int val) {
+	NODE *out = find(val);
+	if (out == 0) return 1; // node not found
+	
+	NODE *crt = head;
+	while (crt->next->val != val) crt = crt->next;
+	// now crt->next is now the same as out
+	crt->next = out->next; // re-link
+	free(out);
+
+	return 0;
 }
 
