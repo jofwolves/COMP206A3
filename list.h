@@ -1,4 +1,9 @@
-typedef struct node {
-	int val;
-	struct node *next;
-} NODE;
+extern NODE *head;
+
+void add (int);
+
+void prettyPrint (void);
+
+int delete (int);
+
+NODE *find (int);
