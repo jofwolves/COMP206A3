@@ -24,7 +24,7 @@ int main (void) {
 
 	int keep_deleting;
 	do {
-		keep_deleting = 0;
+		keep_deleting = 0; // default to not continuing
 		printf("Input a number to be deleted from the list: ");
 		scanf("%d",&number);
 
@@ -43,6 +43,9 @@ int main (void) {
 			!strcmp(delete_another,"Yes") ||
 			!strcmp(delete_another,"y") ||
 			!strcmp(delete_another,"Y")) keep_deleting = 1;
+		// need to do the above cases manually
+		// since, for some reason, "yES" and "yeS"
+		// aren't supposed to match : (
 
 	} while (keep_deleting);
 

@@ -8,19 +8,21 @@ typedef struct node {
 
 typedef struct node NODE;
 
+// avoid passing to each function manually
 NODE *head;
 
 #define NEW_NODE (NODE *) malloc(sizeof(NODE))
 void add (int val) {
-	if (head == 0) {
-		head = NEW_NODE;
-		head->val = val;
-		head->next = 0;
+	if (head == 0) {     // need to make a
+		head = NEW_NODE; // new list from
+		head->val = val; // scratch if head
+		head->next = 0;  // isn't initialized
 	}
 	else {
-		NODE *crt = head;
+		NODE *crt = head; // get to the end
 		while (crt->next != 0) crt = crt->next;
 	
+		// make a new node
 		NODE *new_node = NEW_NODE;
 		crt->next = new_node;
 		new_node->val = val;
@@ -43,7 +45,7 @@ void prettyPrint (void) {
 }
 
 NODE* find (int val) {
-	printf("entering find()... "); // DEBUG
+	//printf("entering find()... "); // DEBUG
 	NODE *crt = head;
 	while (crt != 0) {
 		if (crt->val == val) break; // val has been found
@@ -53,14 +55,14 @@ NODE* find (int val) {
 }
 
 int delete (int val) {
-	printf("entering delete()... "); // DEBUG
+	//printf("entering delete()... "); // DEBUG
 	NODE *out = find(val);
 	if (out == 0) return 0; // node not found
 
-	if (head->val == val) {
-		NODE *temp = head;
-		head = head->next;
-		free(temp);
+	if (head->val == val) { // need to point
+		NODE *temp = head;  // head to the second
+		head = head->next;  // node before deleating
+		free(temp);         // the previous head
 	}
 	else {
 		NODE *crt = head;
@@ -69,6 +71,6 @@ int delete (int val) {
 		crt->next = out->next; // re-link
 		free(out);
 	}
-	return 1; // this is backwards.
+	return 1; // this is backwards. come on now.
 }
 
