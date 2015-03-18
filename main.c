@@ -25,14 +25,15 @@ int main (void) {
 	int keep_deleting;
 	do {
 		keep_deleting = 0;
-		printf("Input a number to be deleted from the list:\n");
+		printf("Input a number to be deleted from the list: ");
 		scanf("%d",&number);
 
+		printf("attempting to delete number... ");
 		int has_been_deleted = delete(number);
 		if (has_been_deleted) printf("NUMBER WAS DELETED\n");
 		else printf("NUMBER WAS NOT FOUND\n");
 
-		prettyPrint();
+		prettyPrint(); // show that numbers have been deleted
 
 		char delete_another[20];
 		printf("Would you like to delete another number? ");
